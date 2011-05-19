@@ -1,0 +1,37 @@
+#!/bin/bash
+
+INSTALL_PREFIX="/usr/local"
+
+while [ $# -gt 0 ]
+do
+    case "$1" in
+	--prefix=*)
+	    INSTALL_PREFIX=$(echo $1 | cut -d '=' -f 2)
+	    ;;
+	--)
+	    shift
+	    break
+	    ;;
+    esac
+    shift
+done
+
+for VAR in alsa jack QtGui
+do
+    printf "Search for $VAR headers... "
+    INC=`pkg-config --cflags-only-I $VAR`
+    if [ "$INC" = "" ];
+    then
+	echo "Error: $VAR header files not found!"
+	exit
+    else
+	echo "ok"
+    fi
+done
+
+qmake splitter/splitter.pro -o splitter/ PREFIX=$INSTALL_PREFIX
+qmake vmm/vmm.pro -o vmm/ PREFIX=$INSTALL_PREFIX
+echo -e "all:\n	make -C splitter \n	make -C vmm\ninstall:\n	make"\
+" -C splitter install\n	make -C vmm install\nclean:\n	make -C splitter"\
+" clean\n	make -C vmm clean\nuninstall:\n	make -C splitter uninstall"\
+"\n	make -C vmm uninstall" > Makefile
