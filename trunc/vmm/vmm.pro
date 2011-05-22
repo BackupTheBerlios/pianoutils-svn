@@ -20,5 +20,7 @@ FORMS    += mainwindow.ui
 RESOURCES += \
     resources.qrc
 
-INSTALLS = target
+INSTALLS = target desktop
 target.path = $$PREFIX/bin
+desktop.files = VMM.desktop
+desktop.path = $$PREFIX/share/applications

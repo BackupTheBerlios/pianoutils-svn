@@ -17,5 +17,7 @@ FORMS    += mainwindow.ui
 
 LIBS += -lasound
 
-INSTALLS += target
+INSTALLS += target desktop
 target.path = $$PREFIX/bin
+desktop.files = splitter.desktop
+desktop.path = $$PREFIX/share/applications
