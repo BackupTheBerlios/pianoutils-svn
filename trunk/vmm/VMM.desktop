@@ -1,0 +1,9 @@
+[Desktop Entry]
+Categories=AudioVideo;Music;
+Type=Application
+Name=VMM
+GenericName=Virtual Micro Metronome
+Exec=vmm
+Icon=Default
+
+
