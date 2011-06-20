@@ -1,8 +1,7 @@
 #include "alsafilter.h"
-#include <stdio.h>
 
 AlsaFilter::AlsaFilter(QObject *parent) : QThread(parent), currentNote(36),
-    ch1Num(0), ch2Num(1), ch1Shift(0), ch2Shift(0) {
+    ch1Num(0), ch2Num(1), ch1Shift(0), ch2Shift(0), channelFilter(-1) {
     int client;
 
     snd_seq_open(&seq, "default", SND_SEQ_OPEN_DUPLEX, 0);
@@ -23,6 +22,11 @@ void AlsaFilter::run() {
     while(snd_seq_event_input(seq, &event) >= 0) {
         snd_seq_ev_set_direct(event);
         snd_seq_ev_set_subs(event);
+
+        // Filtering by channel
+        if (channelFilter >= 0) {
+            if (event->data.note.channel != channelFilter) continue;
+        }
 
         if (event->type == SND_SEQ_EVENT_NOTEON || event->type == SND_SEQ_EVENT_NOTEOFF) {
             if (event->data.note.note >= currentNote) {
@@ -64,4 +68,8 @@ void AlsaFilter::setChShift1(int notes) {
 
 void AlsaFilter::setChShift2(int notes) {
     ch2Shift = notes;
+}
+
+void AlsaFilter::setChFilter(int chnl) {
+    channelFilter = chnl - 1;
 }

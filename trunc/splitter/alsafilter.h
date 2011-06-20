@@ -19,6 +19,7 @@ private:
     int currentNote;
     int ch1Num, ch2Num;
     int ch1Shift, ch2Shift;
+    int channelFilter;
 
 signals:
 
@@ -28,6 +29,7 @@ public slots:
     void setChNum2(int num);
     void setChShift1(int notes);
     void setChShift2(int notes);
+    void setChFilter(int chnl);
 };
 
 #endif // ALSAFILTER_H

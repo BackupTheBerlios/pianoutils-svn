@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>310</width>
+    <width>322</width>
     <height>145</height>
    </rect>
   </property>
@@ -89,7 +89,7 @@
    <widget class="QGroupBox" name="groupBox_2">
     <property name="geometry">
      <rect>
-      <x>165</x>
+      <x>177</x>
       <y>40</y>
       <width>141</width>
       <height>101</height>
@@ -165,6 +165,29 @@
     </property>
     <property name="text">
      <string>Split on note</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_6">
+    <property name="geometry">
+     <rect>
+      <x>175</x>
+      <y>15</y>
+      <width>71</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Use channel</string>
+    </property>
+   </widget>
+   <widget class="QComboBox" name="inputChCombo">
+    <property name="geometry">
+     <rect>
+      <x>249</x>
+      <y>10</y>
+      <width>64</width>
+      <height>24</height>
+     </rect>
     </property>
    </widget>
   </widget>
