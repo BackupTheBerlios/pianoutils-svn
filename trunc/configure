@@ -31,7 +31,9 @@ done
 
 qmake splitter/splitter.pro -o splitter/ PREFIX=$INSTALL_PREFIX
 qmake vmm/vmm.pro -o vmm/ PREFIX=$INSTALL_PREFIX
-echo -e "all:\n	make -C splitter \n	make -C vmm\ninstall:\n	make"\
-" -C splitter install\n	make -C vmm install\nclean:\n	make -C splitter"\
-" clean\n	make -C vmm clean\nuninstall:\n	make -C splitter uninstall"\
-"\n	make -C vmm uninstall" > Makefile
+
+echo -e "all:\n\tmake -C splitter\n\tmake -C vmm\ninstall:\n\tmake"\
+" -C splitter install\n\tmake -C vmm install\n\tinstall -m 644 pianoutils.png"\
+" $INSTALL_PREFIX/share/icons/hicolor/32x32/apps/\nclean:\n\tmake -C splitter"\
+" clean\n\tmake -C vmm clean\nuninstall:\n\tmake -C splitter uninstall"\
+"\n\tmake -C vmm uninstall" > Makefile

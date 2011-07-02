@@ -4,6 +4,4 @@ Type=Application
 Name=Splitter
 GenericName=MIDI keyboard splitter
 Exec=splitter
-Icon=Default
-
-
+Icon=pianoutils
