@@ -14,3 +14,11 @@ Requirements for building: Qt4, alsa-devel, jack. For build it type:
 Default installation prefix is /usr/local. To change it run ./configure with
 parameter:
     ./configure --prefix=/opt
+
+
+CHANGELOG
+-------------------------
+Version 0.1:
+    - midi channel filter was added to the Splitter
+    - *.desktop files and icons for them
+    - .spec file for RPM's building
