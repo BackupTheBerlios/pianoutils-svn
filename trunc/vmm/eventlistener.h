@@ -15,7 +15,7 @@ signals:
     void buttonClicked(QString b);
     void buttonHover(QString b);
     void buttonLeave(QString b);
-    void buttonClk(QString b);
+    void rightClicked(int x, int y);
 
 protected:
     bool eventFilter(QObject *obj, QEvent *event);

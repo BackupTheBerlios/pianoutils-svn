@@ -3,7 +3,7 @@
 
 JackOutput* JackOutput::instance = 0;
 
-JackOutput::JackOutput(QObject *parent) : QObject(parent) {
+JackOutput::JackOutput(QObject *parent) : QObject(parent), MAX_AMP(0.5) {
 }
 
 
@@ -63,24 +63,28 @@ void JackOutput::buildWave() {
     scale = 2 * M_PI * 880 / sampleRate;
     scaleA = 2 * M_PI *1100 / sampleRate;
 
+    waveExBar = (sample_t *) malloc(waveLength * sizeof(sample_t));
+    waveExBeat = (sample_t *) malloc(waveLength * sizeof(sample_t));
     waveBar = (sample_t *) malloc(waveLength * sizeof(sample_t));
     waveBeat = (sample_t *) malloc(waveLength * sizeof(sample_t));
     amp = (double *) malloc(waveLength * sizeof(double));
 
     for (i = 0; i < attackLength; i++)
-        amp[i] = MAX_AMP * i / (double) attackLength;
+        amp[i] = i / (double) attackLength;
 
     for (i = attackLength; i < (int) waveLength - decayLength; i++)
-        amp[i] = MAX_AMP;
+        amp[i] = 1;
 
     for (i = (int) waveLength - decayLength; i < (int) waveLength; i++) {
-        amp[i] = - MAX_AMP * (i - (double) waveLength) / (double) decayLength;
+        amp[i] = - (i - (double) waveLength) / (double) decayLength;
     }
 
     for (i = 0; i < (int) waveLength; i++) {
-        waveBar[i] = amp[i] * sin(scaleA * i);
-        waveBeat[i] =  amp[i] * sin(scale * i);
+        waveExBar[i] = amp[i] * sin(scaleA * i);
+        waveExBeat[i] =  amp[i] * sin(scale * i);
     }
+
+    setAmp(MAX_AMP);
 }
 
 
@@ -101,4 +105,22 @@ void JackOutput::click() {
         jack_ringbuffer_write(rb, (char *) waveBar, waveLength * sizeof(sample_t));
     else jack_ringbuffer_write(rb, (char *) waveBeat, waveLength * sizeof(sample_t));
     mCount++;
+}
+
+
+float JackOutput::getAmp() {
+    return MAX_AMP;
+}
+
+
+void JackOutput::setAmp(float newAmp) {
+    memcpy(waveBar, waveExBar, waveLength * sizeof(sample_t));
+    memcpy(waveBeat, waveExBeat, waveLength * sizeof(sample_t));
+
+    for (int i = 0; i < (int) waveLength; i++) {
+        waveBar[i] = waveBar[i] * newAmp;
+        waveBeat[i] = waveBeat[i] * newAmp;
+    }
+
+    MAX_AMP = newAmp;
 }

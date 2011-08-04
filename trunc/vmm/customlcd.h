@@ -2,6 +2,7 @@
 #define CUSTOMLCD_H
 
 #include <QtGui/QLCDNumber>
+#include <QMouseEvent>
 
 class CustomLCD : public QLCDNumber
 {

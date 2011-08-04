@@ -1,6 +1,5 @@
 #include "mainwindow.h"
-
-
+#include <QDebug>
 
 
 MainWindow::MainWindow(QWidget *parent) :
@@ -33,11 +32,17 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(filter, SIGNAL(buttonHover(QString)), this, SLOT(hoverAction(QString)));
     connect(filter, SIGNAL(buttonLeave(QString)), this, SLOT(leaveAction(QString)));
 
+    this->installEventFilter(filter);
+    connect(filter, SIGNAL(rightClicked(int, int)), this, SLOT(formclickAction(int, int)));
+
     currentBpm = 120;
 
     ui->lcdNumber->setSegmentStyle(QLCDNumber::Flat);
     ui->lcdNumber->setStyleSheet("* { background-color:rgb(170,170,180);}");
     ui->lcdNumber->display(currentBpm);
+
+    //Volume control
+    vol = new VolumeWindow();
 }
 
 
@@ -87,4 +92,12 @@ void MainWindow::leaveAction(QString b) {
 
 void MainWindow::menutriggerAction(QAction *act) {
     JackOutput::getInstance()->setMeasure(act->text().section('/',0,0).toInt());
+}
+
+
+void MainWindow::formclickAction(int x, int y) {
+    int locX = this->geometry().x() + x;
+    int locY = this->geometry().y() + y;
+    vol->setGeometry(locX, locY, vol->geometry().width(), vol->geometry().height());
+    vol->show();
 }
