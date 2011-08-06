@@ -7,17 +7,17 @@ TEMPLATE = app
 SOURCES += main.cpp\
         mainwindow.cpp \
     alsafilter.cpp \
-    notewidget.cpp
+    notewidget.cpp \
+    jackfilter.cpp
 
 HEADERS  += mainwindow.h \
     alsafilter.h \
-    notewidget.h
+    notewidget.h \
+    jackfilter.h
 
 FORMS    += mainwindow.ui
 
-LIBS += -lasound
+LIBS += -lasound -ljack
 
-INSTALLS += target desktop
+INSTALLS += target
 target.path = $$PREFIX/bin
-desktop.files = splitter.desktop
-desktop.path = $$PREFIX/share/applications

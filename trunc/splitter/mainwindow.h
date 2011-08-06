@@ -2,7 +2,10 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QMessageBox>
+
 #include "alsafilter.h"
+#include "jackfilter.h"
 #include "notewidget.h"
 
 namespace Ui {
@@ -20,6 +23,7 @@ public:
 private:
     Ui::MainWindow *ui;
     AlsaFilter *filter;
+    JackFilter *jFilter;
     NoteWidget *nw;
 };
 

@@ -21,8 +21,6 @@ private:
     int ch1Shift, ch2Shift;
     int channelFilter;
 
-signals:
-
 public slots:
     void setNote(int i);
     void setChNum1(int num);
