@@ -19,5 +19,14 @@ FORMS    += mainwindow.ui
 
 LIBS += -lasound -ljack
 
-INSTALLS += target
+TRANSLATIONS += splitter_ru_RU.ts
+TRANSLATIONS.path = $$PREFIX/share/locale
+TRANSLATIONS.files = splitter_ru_RU.qm
+
 target.path = $$PREFIX/bin
+desktop.files = splitter.desktop
+desktop.path = $$PREFIX/share/applications
+
+INSTALLS += target \
+    TRANSLATIONS \
+    desktop

@@ -7,7 +7,7 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    ui->inputChCombo->addItem(QString("All"));
+    ui->inputChCombo->addItem(tr("All"));
     ui->nw->setValue(36);
     for (int i = 1; i < 17; i++) {
         ui->channel1Combo->addItem(QString("%1").arg(i));

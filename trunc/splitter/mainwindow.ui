@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>322</width>
+    <width>340</width>
     <height>145</height>
    </rect>
   </property>
@@ -17,11 +17,14 @@
    <widget class="NoteWidget" name="nw" native="true">
     <property name="geometry">
      <rect>
-      <x>85</x>
+      <x>92</x>
       <y>5</y>
       <width>70</width>
       <height>30</height>
      </rect>
+    </property>
+    <property name="toolTip">
+     <string>Note which divides keyboard on two groups</string>
     </property>
    </widget>
    <widget class="QGroupBox" name="groupBox">
@@ -89,7 +92,7 @@
    <widget class="QGroupBox" name="groupBox_2">
     <property name="geometry">
      <rect>
-      <x>177</x>
+      <x>192</x>
       <y>40</y>
       <width>141</width>
       <height>101</height>
@@ -157,11 +160,14 @@
    <widget class="QLabel" name="label_5">
     <property name="geometry">
      <rect>
-      <x>10</x>
+      <x>8</x>
       <y>15</y>
-      <width>72</width>
-      <height>14</height>
+      <width>77</width>
+      <height>16</height>
      </rect>
+    </property>
+    <property name="toolTip">
+     <string/>
     </property>
     <property name="text">
      <string>Split on note</string>
@@ -172,22 +178,28 @@
      <rect>
       <x>175</x>
       <y>15</y>
-      <width>71</width>
+      <width>85</width>
       <height>16</height>
      </rect>
     </property>
     <property name="text">
      <string>Use channel</string>
     </property>
+    <property name="alignment">
+     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+    </property>
    </widget>
    <widget class="QComboBox" name="inputChCombo">
     <property name="geometry">
      <rect>
-      <x>249</x>
+      <x>268</x>
       <y>10</y>
       <width>64</width>
       <height>24</height>
      </rect>
+    </property>
+    <property name="toolTip">
+     <string>MIDI messages will be received on this channel only</string>
     </property>
    </widget>
   </widget>
