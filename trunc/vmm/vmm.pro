@@ -11,16 +11,16 @@ SOURCES += main.cpp\
         mainwindow.cpp \
     customlcd.cpp \
     eventlistener.cpp \
-    jackoutput.cpp \
-    volumewindow.cpp
+    volumewindow.cpp \
+    audiooutput.cpp
 
 HEADERS  += mainwindow.h \
     customlcd.h \
     eventlistener.h \
-    jackoutput.h \
-    volumewindow.h
+    volumewindow.h \
+    audiooutput.h
 
-LIBS += -ljack
+LIBS += -ljack -lrtaudio
 
 FORMS    += mainwindow.ui \
     volumewindow.ui

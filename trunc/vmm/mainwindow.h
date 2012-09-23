@@ -5,12 +5,13 @@
 #include <QtGui/QInputDialog>
 #include <QtGui/QMenu>
 #include <QtGui/QActionGroup>
+#include <QVector>
+#include <QMessageBox>
 
 #include "ui_mainwindow.h"
-#include "jackoutput.h"
 #include "eventlistener.h"
 #include "volumewindow.h"
-//#include "ui_volumewindow.h"
+#include "audiooutput.h"
 
 namespace Ui {
     class MainWindow;
@@ -21,7 +22,7 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 
 public:
-    explicit MainWindow(QWidget *parent = 0);
+    explicit MainWindow(AudioOutput *ao, QWidget *parent = 0);
     ~MainWindow();
 
 public slots:
@@ -30,14 +31,17 @@ public slots:
     void hoverAction(QString b);
     void leaveAction(QString b);
     void menutriggerAction(QAction *act);
+    void devicemenuTriggerAction(QAction *act);
     void formclickAction(int x, int y);
 
 private:
     Ui::MainWindow *ui;
     VolumeWindow *vol;
     int currentBpm;
-    QMenu *menu;
-    QActionGroup *grp;
+    QMenu *menu, *devices;
+    QActionGroup *devicesGrp;
+    AudioOutput *output;
+    QString currentDevice;      // Label of current output device
 };
 
 #endif // MAINWINDOW_H

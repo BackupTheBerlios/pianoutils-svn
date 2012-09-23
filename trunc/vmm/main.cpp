@@ -3,8 +3,7 @@
 #include <QLocale>
 #include <QLibraryInfo>
 #include "mainwindow.h"
-#include "jackoutput.h"
-
+#include "audiooutput.h"
 
 int main(int argc, char *argv[])
 {
@@ -20,11 +19,12 @@ int main(int argc, char *argv[])
         a.installTranslator(qtr);
     }
 
+    AudioOutput ao;
 
-    MainWindow w;
+    MainWindow w(&ao);
 
-    JackOutput *jo = JackOutput::getInstance();
-    jo->init();
+    /*JackOutput *jo = JackOutput::getInstance();
+    jo->init();*/
 
     w.show();
 

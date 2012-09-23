@@ -5,6 +5,9 @@
 #include <QEvent>
 #include <QMouseEvent>
 
+/*
+ * Filter for UI events
+ */
 class EventListener : public QObject
 {
     Q_OBJECT

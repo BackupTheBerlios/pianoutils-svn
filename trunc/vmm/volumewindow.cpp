@@ -1,18 +1,18 @@
 #include "volumewindow.h"
 
-VolumeWindow::VolumeWindow(QWidget *parent) :
+VolumeWindow::VolumeWindow(AudioOutput *ao, QWidget *parent) :
         QMainWindow(parent, Qt::Popup),
     ui(new Ui::VolumeWindow)
 {
     ui->setupUi(this);
+    output = ao;
 }
 
 
 void VolumeWindow::showEvent(QShowEvent *) {
-    ui->verticalSlider->setSliderPosition(JackOutput::getInstance()->getAmp() * 100);
-    //emit signalMainWindowShown();
+    ui->verticalSlider->setSliderPosition(output->getVolume() * 100);
 }
 
 void VolumeWindow::changeVolume(int newVol) {
-    JackOutput::getInstance()->setAmp((float) newVol / 100);
+    output->setVolume((float) newVol / 100);
 }

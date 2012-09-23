@@ -1,5 +1,4 @@
 #include "eventlistener.h"
-#include <stdio.h>
 
 EventListener::EventListener(QObject *parent) :
     QObject(parent) {}
