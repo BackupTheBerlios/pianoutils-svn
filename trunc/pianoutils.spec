@@ -38,6 +38,5 @@ pianists. It's including metronome and keyboard splitter.
 %{_datadir}/applications/VMM.desktop
 %{_datadir}/applications/splitter.desktop
 %{_datadir}/icons/hicolor/32x32/apps/pianoutils.png
-%{_datadir}/locale/*_ru_RU.qm
 
 

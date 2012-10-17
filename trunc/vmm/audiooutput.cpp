@@ -27,7 +27,7 @@ QVector <QString> AudioOutput::getDevices() {
     while (i.hasNext()) {
         QString pref;
 
-        i.next();        
+        i.next();
         switch(i.key()) {
         case RtAudio::LINUX_ALSA:
             pref = "ALSA: ";

@@ -5,8 +5,11 @@
 #include <QMessageBox>
 
 #include "alsafilter.h"
-#include "jackfilter.h"
 #include "notewidget.h"
+
+#ifndef __SPLITTER_WITHOUTJACK__
+#include "jackfilter.h"
+#endif
 
 namespace Ui {
     class MainWindow;
@@ -23,7 +26,7 @@ public:
 private:
     Ui::MainWindow *ui;
     AlsaFilter *filter;
-    JackFilter *jFilter;
+//    JackFilter *jFilter;
     NoteWidget *nw;
 };
 

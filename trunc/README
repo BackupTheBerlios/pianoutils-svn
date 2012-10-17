@@ -18,12 +18,17 @@ parameter:
 
 CHANGELOG
 -------------------------
-Version 0.1:
-    - midi channel filter was added to the Splitter
-    - *.desktop files and icons for them
-    - .spec file for RPM's building
+Version 0.2:
+    - VMM now producing output via RtAudio - many audio backends available
+    - Splitter can be build without Jack support
+    - Some bugfixes in translation
 
 Version 0.1.5:
     - volume regulator into VMM
     - Splitter can process Jack-MIDI
     - Russian localization added
+
+Version 0.1:
+    - midi channel filter was added to the Splitter
+    - *.desktop files and icons for them
+    - .spec file for RPM's building

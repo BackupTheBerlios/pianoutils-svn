@@ -20,7 +20,8 @@ HEADERS  += mainwindow.h \
     volumewindow.h \
     audiooutput.h
 
-LIBS += -ljack -lrtaudio
+LIBS += -lrtaudio \
+    $$RTLIBS
 
 FORMS    += mainwindow.ui \
     volumewindow.ui
@@ -29,7 +30,6 @@ RESOURCES += \
     resources.qrc
 
 TRANSLATIONS += vmm_ru_RU.ts
-TRANSLATIONS.path = $$PREFIX/share/locale
 TRANSLATIONS.files = vmm_ru_RU.qm
 
 target.path = $$PREFIX/bin
@@ -37,5 +37,4 @@ desktop.files = VMM.desktop
 desktop.path = $$PREFIX/share/applications
 
 INSTALLS = target \
-    TRANSLATIONS \
     desktop

@@ -5,4 +5,7 @@
         <file>button1.png</file>
         <file>button2.png</file>
     </qresource>
+    <qresource prefix="/translations">
+        <file>vmm_ru_RU.qm</file>
+    </qresource>
 </RCC>

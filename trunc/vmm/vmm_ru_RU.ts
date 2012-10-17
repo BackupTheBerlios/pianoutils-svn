@@ -19,14 +19,24 @@
         <translation>Размер</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="57"/>
+        <location filename="mainwindow.cpp" line="24"/>
+        <source>Output</source>
+        <translation>Выводить</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.cpp" line="63"/>
         <source>Set BPM</source>
         <translation>Темп</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="57"/>
+        <location filename="mainwindow.cpp" line="63"/>
         <source>Beats Per Minute:</source>
         <translation>Ударов в минуту:</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.cpp" line="126"/>
+        <source>Error</source>
+        <translation>Ошибка</translation>
     </message>
 </context>
 <context>

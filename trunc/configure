@@ -1,12 +1,24 @@
 #!/bin/bash
 
 INSTALL_PREFIX="/usr/local"
+PACKS="QtGui alsa"
+USEJACK=1
+
+RTLIBS=`rtaudio-config --libs`
+if [ "$RTLIBS" = "" ];
+then
+    echo "Error: rtaudio-config not found!";
+    exit;
+fi
 
 while [ $# -gt 0 ]
 do
     case "$1" in
 	--prefix=*)
 	    INSTALL_PREFIX=$(echo $1 | cut -d '=' -f 2)
+	    ;;
+	--without-jack)
+	    USEJACK=0
 	    ;;
 	--)
 	    shift
@@ -16,7 +28,12 @@ do
     shift
 done
 
-for VAR in alsa jack QtGui
+if [ "$USEJACK" == 1 ];
+then
+    PACKS="$PACKS jack"
+fi
+
+for VAR in $PACKS
 do
     printf "Search for $VAR headers... "
     INC=`pkg-config --cflags-only-I $VAR`
@@ -29,8 +46,13 @@ do
     fi
 done
 
-qmake splitter/splitter.pro -o splitter/ PREFIX=$INSTALL_PREFIX
-qmake vmm/vmm.pro -o vmm/ PREFIX=$INSTALL_PREFIX
+if [ "$USEJACK" == "0" ];
+then
+    qmake splitter/splitter.pro -o splitter/ PREFIX=$INSTALL_PREFIX DEFINES=__SPLITTER_WITHOUTJACK__
+else
+    qmake splitter/splitter.pro -o splitter/ PREFIX=$INSTALL_PREFIX
+fi
+qmake vmm/vmm.pro -o vmm/ PREFIX=$INSTALL_PREFIX RTLIBS="$RTLIBS"
 
 echo -e "all:\n\tmake -C splitter\n\tmake -C vmm\n"\
 "install:\n\tmake"\

@@ -11,20 +11,11 @@ int main(int argc, char *argv[])
 
     QTranslator *qtr = new QTranslator(0);
     QLocale loc;
-    QString locPath = QLibraryInfo::location(QLibraryInfo::TranslationsPath);
-    if(qtr->load("vmm_" + loc.name(), locPath)) a.installTranslator(qtr);
-    else {
-        locPath = "/usr/local/share/locale";
-        qtr->load("vmm_" + loc.name(), locPath);
-        a.installTranslator(qtr);
-    }
+    if(qtr->load("vmm_" + loc.name(), ":/translations")) a.installTranslator(qtr);
 
     AudioOutput ao;
 
     MainWindow w(&ao);
-
-    /*JackOutput *jo = JackOutput::getInstance();
-    jo->init();*/
 
     w.show();
 

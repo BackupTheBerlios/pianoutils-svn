@@ -46,7 +46,7 @@
         <translation>Слушать канал</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="199"/>
+        <location filename="mainwindow.ui" line="202"/>
         <source>MIDI messages will be received on this channel only</source>
         <translation>MIDI-сообщения будут приниматься только с этого канала</translation>
     </message>
@@ -56,14 +56,14 @@
         <translation>Все</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="39"/>
+        <location filename="mainwindow.cpp" line="40"/>
         <source>Jack error</source>
         <translation>Ошибка Jack</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="39"/>
+        <location filename="mainwindow.cpp" line="40"/>
         <source>Can&apos;t connect to jack server</source>
-        <translation>Не удеётся подключиться к серверу</translation>
+        <translation>Не удаётся подключиться к серверу</translation>
     </message>
 </context>
 </TS>

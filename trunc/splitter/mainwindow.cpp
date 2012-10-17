@@ -26,9 +26,10 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->channel2Spin, SIGNAL(valueChanged(int)), filter, SLOT(setChShift2(int)));
     connect(ui->inputChCombo, SIGNAL(currentIndexChanged(int)), filter, SLOT(setChFilter(int)));
 
+#ifndef __SPLITTER_WITHOUTJACK__
     // Jack filter
     try {
-        jFilter = new JackFilter();
+        JackFilter *jFilter = new JackFilter();
         connect(ui->nw, SIGNAL(valueChanged(int)), jFilter, SLOT(setNote(int)));
         connect(ui->channel1Combo, SIGNAL(currentIndexChanged(int)), jFilter, SLOT(setChNum1(int)));
         connect(ui->channel2Combo, SIGNAL(currentIndexChanged(int)), jFilter, SLOT(setChNum2(int)));
@@ -38,8 +39,7 @@ MainWindow::MainWindow(QWidget *parent) :
     } catch(int e) {
         QMessageBox::warning(this, tr("Jack error"), tr("Can't connect to jack server"));
     }
-
-
+#endif
 
 }
 

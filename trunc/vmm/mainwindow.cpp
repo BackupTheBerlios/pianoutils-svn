@@ -21,7 +21,7 @@ MainWindow::MainWindow(AudioOutput *ao, QWidget *parent) :
     grp->actions()[0]->setChecked(true);
 
     menu->addSeparator();
-    devices = new QMenu("Output", menu);
+    devices = new QMenu(tr("Output"), menu);
     menu->addMenu(devices);
     devicesGrp = new QActionGroup(this);
     connect(devices, SIGNAL(triggered(QAction*)), this, SLOT(devicemenuTriggerAction(QAction*)));
